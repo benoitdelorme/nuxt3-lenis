@@ -17,7 +17,7 @@ yarn add nuxt3-lenis
 
 ## Usage
 
-```js
+```vue
 <template>
   <Lenis root>
     /* content */
@@ -43,7 +43,7 @@ yarn add nuxt3-lenis
 
 ### With customs options
 
-```js
+```vue
 <template>
   <Lenis :options="options" root>
     { /* content */ }
@@ -67,7 +67,7 @@ const options = {
 
 ### GSAP integration
 
-```js
+```vue
 <template>
   <Lenis ref="lenisRef" :autoRaf="false" root>
     { /* content */ }
@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
 
 ### Scroll Event
 
-```js
+```vue
 <template>
   <Lenis @scroll="onScroll" root>
     { /* content */ }
@@ -109,7 +109,7 @@ const onScroll = ({scroll, velocity, direction, progress}) => {
 
 ### With custom rAF
 
-```js
+```vue
 <template>
   <Lenis ref="lenisRef" :autoRaf="false" root>
     { /* content */ }
