@@ -46,7 +46,7 @@ yarn add nuxt3-lenis
 ```vue
 <template>
   <Lenis :options="options" root>
-    { /* content */ }
+    <!-- Content -->
   </Lenis>
 </template>
 
