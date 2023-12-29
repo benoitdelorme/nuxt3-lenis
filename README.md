@@ -20,7 +20,7 @@ yarn add nuxt3-lenis
 ```vue
 <template>
   <Lenis root>
-    /* content */
+    <!-- Content -->
   </Lenis>
 </template>
 
@@ -65,7 +65,7 @@ The hook takes three argument:
 ```vue
 <template>
   <Lenis :options="options" root>
-    /* content */
+    <!-- Content -->
   </Lenis>
 </template>
 
@@ -89,7 +89,7 @@ const options = {
 ```vue
 <template>
   <Lenis ref="lenisRef" :autoRaf="false" root>
-    /* content */
+    <!-- Content -->
   </Lenis>
 </template>
 
@@ -115,7 +115,7 @@ onBeforeUnmount(() => {
 ```vue
 <template>
   <Lenis @scroll="onScroll" root>
-    /* content */
+    <!-- Content -->
   </Lenis>
 </template>
 
@@ -131,7 +131,7 @@ const onScroll = ({scroll, velocity, direction, progress}) => {
 ```vue
 <template>
   <Lenis ref="lenisRef" :autoRaf="false" root>
-    /* content */
+    <!-- Content -->
   </Lenis>
 </template>
 
