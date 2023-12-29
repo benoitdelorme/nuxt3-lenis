@@ -26,7 +26,7 @@ yarn add nuxt3-lenis
 
 <script setup>
   const lenis = useLenis(({scroll, velocity, progress, direction}) => {
-    // called every scroll
+    /* called every scroll */
   })
 </script>
 
