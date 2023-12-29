@@ -29,11 +29,12 @@ const props = defineProps({
   }
 })
 
-const lenis = ref(null)
 const lenisWrapper = ref()
 const lenisContent = ref()
+const callbacks = inject("lenisScrollCallbacks")
+const lenis = inject("lenisInstance")
 
-const lenisOptions = computed(() => {
+const options = computed(() => {
   return {
     ...props.options,
     ...(!props.root && {
@@ -50,9 +51,13 @@ const onFrame = (time) => {
 
 const initLenis = () => {
   if(process.client) {
-    lenis.value = new Lenis(lenisOptions.value)
+    lenis.value = new Lenis(options.value)
 
     lenis.value.on("scroll", (e) => {
+      for(let i = 0; i < callbacks?.value.length; i++) {
+        callbacks.value[i].callback(e)
+      }
+
       emit("scroll", e)
     })
 

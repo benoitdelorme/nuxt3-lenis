@@ -1,6 +1,6 @@
 <template>
   <Lenis ref="lenisRef" :options="options" @scroll="onScroll" :autoRaf="false" root>
-    <section>Examples: with options, external rAF, Scroll Event</section>
+    <section>Examples: with options, external rAF, Lenis event, Emit event</section>
     <section>Section</section>
     <section>Section</section>
     <section>Section</section>
@@ -28,14 +28,10 @@ const onFrame = (time) => {
 }
 
 const onScroll = ({scroll, velocity, direction, progress}) => {
-  console.log({scroll, velocity, direction, progress})
+  console.log(`Scroll from About Page: ${ scroll }`)
 }
 
 onMounted(() => {
-  /* lenisRef.value.instance.on("scroll", ({scroll, velocity, direction, progress}) => {
-    console.log({scroll, velocity, direction, progress})
-  }) */
-
   Tempus.add(onFrame, 0)
 })
 

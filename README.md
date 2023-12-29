@@ -17,12 +17,19 @@ yarn add nuxt3-lenis
 
 ## Usage
 
-```js
+```vue
 <template>
   <Lenis root>
     /* content */
   </Lenis>
 </template>
+
+<script setup>
+  const lenis = useLenis(({scroll, velocity, progress, direction}) => {
+    // called every scroll
+  })
+</script>
+
 ```
 <br/>
 
@@ -39,14 +46,26 @@ yarn add nuxt3-lenis
 
 <br/>
 
+## Hooks
+Once the Lenis context is set (components mounted inside `<Lenis>`) you can use these handy hooks:
+
+`useLenis` is a hook that returns the Lenis instance
+
+The hook takes three argument:
+- `callback`: The function to be called whenever a scroll event is emitted
+- `deps`: Trigger callback on change
+- `priority`: Manage callback execution order
+
+<br/>
+
 ## Examples
 
 ### With customs options
 
-```js
+```vue
 <template>
   <Lenis :options="options" root>
-    { /* content */ }
+    /* content */
   </Lenis>
 </template>
 
@@ -67,10 +86,10 @@ const options = {
 
 ### GSAP integration
 
-```js
+```vue
 <template>
   <Lenis ref="lenisRef" :autoRaf="false" root>
-    { /* content */ }
+    /* content */
   </Lenis>
 </template>
 
@@ -93,10 +112,10 @@ onBeforeUnmount(() => {
 
 ### Scroll Event
 
-```js
+```vue
 <template>
   <Lenis @scroll="onScroll" root>
-    { /* content */ }
+    /* content */
   </Lenis>
 </template>
 
@@ -109,10 +128,10 @@ const onScroll = ({scroll, velocity, direction, progress}) => {
 
 ### With custom rAF
 
-```js
+```vue
 <template>
   <Lenis ref="lenisRef" :autoRaf="false" root>
-    { /* content */ }
+    /* content */
   </Lenis>
 </template>
 

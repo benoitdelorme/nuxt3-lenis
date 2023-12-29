@@ -17,5 +17,3 @@
     </section>
   </Lenis>
 </template>
-
-<script setup></script>

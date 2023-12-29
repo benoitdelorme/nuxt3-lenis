@@ -1,16 +1,13 @@
 <template>
   <main>
     <nuxt-page />
-    <nav>
-      <NuxtLink to="/">
-        Index
-      </NuxtLink> &nbsp;
-      <NuxtLink to="/about">
-        About
-      </NuxtLink>
-    </nav>
+    <NavigationMenu />
   </main>
 </template>
+
+<script setup>
+
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
