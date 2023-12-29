@@ -1,92 +1,90 @@
 <template>
-  <div ref="lenisContainer">
-     <slot />
+  <div ref="lenisWrapper">
+    <div  v-if="!root" ref="lenisContent">
+      <slot />
+    </div>
+    <slot v-else />
   </div>
 </template>
 
-<script>
-import gsap from "gsap"
-import { Tempus } from '#imports'
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+<script setup>
+const emit = defineEmits(['scroll'])
 
-export default defineComponent({
-  props: ["options"],
-  setup({ options }, { emit }) {
-    if(process.client) {
-      const Lenis = inject("Lenis")
-      const setScrollState = inject("setScrollState")
-      const setLenis = inject("setLenis")
+const props = defineProps({
+  options: {
+    type: Object,
+    default: Object
+  },
+  root: {
+    type: Boolean,
+    default: false
+  },
+  autoRaf: {
+    type: Boolean,
+    default: true
+  },
+  rafPriority: {
+    type: Number,
+    default: 0
+  }
+})
 
-      const lenisInstance = ref(null)
-      const lenisContainer = ref(null)
-        
-      gsap.ticker.lagSmoothing(0)
+const lenis = ref(null)
+const lenisWrapper = ref()
+const lenisContent = ref()
 
-      const lenisOptions = reactive(
-        Object.assign(
-            {},
-            {
-              duration: 1.2,
-              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-              direction: "vertical",
-              gestureDirection: "vertical",
-              smooth: true,
-              mouseMultiplier: 1,
-              smoothTouch: false,
-              touchMultiplier: 2,
-              infinite: false,
-            },
-            options || {}
-        )
-      )
-      
-      onMounted(() => {
-        initLenis()
-      })
+const lenisOptions = computed(() => {
+  return {
+    ...props.options,
+    ...(!props.root && {
+      wrapper: lenisWrapper.value,
+      content: lenisContent.value
+    })
+  }
+})
 
-      onBeforeUnmount(() => {
-        destroyLenis()
-      })
-      
-      const onFrame = (time) => {
-        if (!lenisInstance.value) return
-        lenisInstance.value.raf(time)
-      };
+const onFrame = (time) => {
+  if (!lenis.value) return
+  lenis.value.raf(time)
+}
 
-      const initLenis = () => {
-        lenisInstance.value = new Lenis(lenisOptions)
-        
-        lenisInstance.value.on("scroll", (scrollData) => {
-            setScrollState(scrollData)
-            ScrollTrigger.update()
-            emit("scroll", scrollData)
-        })
-        
-        setLenis(lenisInstance.value)
-        emit("initiated", { lenis: lenisInstance.value })
+const initLenis = () => {
+  if(process.client) {
+    lenis.value = new Lenis(lenisOptions.value)
 
-        Tempus.add(onFrame, 0)
-      }
+    lenis.value.on("scroll", (e) => {
+      emit("scroll", e)
+    })
 
-      const destroyLenis = () => {
-        if (!lenisInstance.value) return
-        
-        setScrollState(false)
-        lenisInstance.value.off("scroll")
-        lenisInstance.value.destroy()
-        lenisInstance.value = null
-        
-        Tempus.remove(onFrame)
-      }
-
-      return {
-        initLenis,
-        destroyLenis,
-        lenisContainer,
-        lenisInstance,
-      }
+    if(props.autoRaf) {
+      Tempus.add(onFrame, props.rafPriority)
     }
   }
+}
+
+const destroyLenis = () => {
+  if (!lenis.value) return
+  
+  lenis.value.destroy()
+  lenis.value = null
+  
+  if(props.autoRaf) {
+    Tempus.remove(onFrame)
+  }
+}
+
+onMounted(() => {
+  initLenis()
+})
+
+onBeforeUnmount(() => {
+  destroyLenis()
+})
+
+defineExpose({
+  instance: lenis,
+  destroyLenis,
+  initLenis
 })
 
 </script>

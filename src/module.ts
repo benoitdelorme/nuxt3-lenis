@@ -32,9 +32,9 @@ export default defineNuxtModule<ModuleOptions>({
     ])
     addImports([
       {
-        name: 'useScrollState',
-        as: 'useScrollState',
-        from: resolver.resolve('./runtime/composables/useScrollState')
+        name: 'useLenis',
+        as: 'useLenis',
+        from: resolver.resolve('./runtime/composables/useLenis')
       }
     ])
     addPlugin(resolver.resolve('./runtime/plugin')),

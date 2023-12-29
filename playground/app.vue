@@ -1,42 +1,69 @@
 <template>
-  <Lenis>
-    <div class="wrapper">
-      Section 1
-    </div>
-  </Lenis>
-  <Lenis>
-    <div class="wrapper">
-      Section 2
-    </div>
-  </Lenis>
-  <Lenis>
-    <div class="wrapper">
-      Section 3
-    </div>
-  </Lenis>
-  <Lenis>
-    <div class="wrapper">
-      Section 4
-    </div>
-  </Lenis>
-  <Lenis>
-    <div class="wrapper">
-      Section 5
-    </div>
-  </Lenis>
+  <main>
+    <nuxt-page />
+    <nav>
+      <NuxtLink to="/">
+        Index
+      </NuxtLink> &nbsp;
+      <NuxtLink to="/about">
+        About
+      </NuxtLink>
+    </nav>
+  </main>
 </template>
 
-<script setup>
-</script>
-
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 
-.wrapper {
-  height: 500vh;
-  width: 100%;
-  background-color: black;
-  color: white;
-  text-align: center;
+html, body {
+  padding: 0;
+  margin: 0;
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:nth-child(1) {
+    background-color: #00dc82;
+  }
+  &:nth-child(2) {
+    background-color: #1FFFE6;
+  }
+  &:nth-child(3) {
+    background-color: #1FBFFF;
+  }
+  &:nth-child(4) {
+    background-color: #1F47FF;
+  }
+  &:nth-child(5) {
+    background-color: #501FFF;
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  background: rgb(255 255 255 / 40%);
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+}
+
+nav a {
+  margin: 0 1rem;
+}
 </style>
