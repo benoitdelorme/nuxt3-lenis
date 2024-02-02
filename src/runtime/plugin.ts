@@ -1,4 +1,5 @@
-import { defineNuxtPlugin } from '#app'
+import { defineNuxtPlugin, } from '#app'
+import { ref } from "vue";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const callbacks = ref([])

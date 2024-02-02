@@ -16,9 +16,13 @@ import {
    onMounted,
    onUpdated,
    ref,
+   inject,
    toRefs,
    watch,
 } from "vue";
+
+import Lenis from '@studio-freight/lenis'
+import Tempus from '@studio-freight/tempus'
 
 const emit = defineEmits(['scroll'])
 
