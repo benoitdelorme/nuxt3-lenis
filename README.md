@@ -15,6 +15,13 @@ For yarn users:
 yarn add nuxt3-lenis
 ```
 
+Add the module in nuxt.config
+```
+modules: [
+  "nuxt3-lenis"
+],
+```
+
 ## Usage
 
 ```vue
@@ -25,9 +32,7 @@ yarn add nuxt3-lenis
 </template>
 
 <script setup>
-  const lenis = useLenis(({scroll, velocity, progress, direction}) => {
-    /* Call every scroll  */
-  })
+  const lenis = useLenis(({scroll, velocity, progress, direction}) => { ... })
 </script>
 ```
 <br/>
