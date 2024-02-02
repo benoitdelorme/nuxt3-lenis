@@ -1,4 +1,15 @@
 import { inject, watch } from '#app'
+import {
+  computed,
+  defineComponent,
+  onBeforeUnmount,
+  onMounted,
+  onUpdated,
+  ref,
+  inject,
+  toRefs,
+  watch,
+} from "vue";
 
 export function useLenis(callback = null, deps = [], priority = 1) {
   let callbacks = inject("lenisScrollCallbacks")

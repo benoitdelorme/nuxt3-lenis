@@ -2,7 +2,7 @@
   <nav>
     <NuxtLink to="/">
       Home
-    </NuxtLink> &nbsp;
+    </NuxtLink>
     <NuxtLink to="/about">
       About
     </NuxtLink>

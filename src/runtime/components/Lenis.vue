@@ -8,6 +8,18 @@
 </template>
 
 <script setup>
+
+import {
+   computed,
+   defineComponent,
+   onBeforeUnmount,
+   onMounted,
+   onUpdated,
+   ref,
+   toRefs,
+   watch,
+} from "vue";
+
 const emit = defineEmits(['scroll'])
 
 const props = defineProps({
