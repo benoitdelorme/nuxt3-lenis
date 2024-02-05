@@ -24,4 +24,5 @@
   onMounted(() => {
     console.log(lenis.instance.value)
   })
+  
 </script>

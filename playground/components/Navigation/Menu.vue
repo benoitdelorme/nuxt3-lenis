@@ -6,6 +6,9 @@
     <NuxtLink to="/about">
       About
     </NuxtLink>
+    <NuxtLink to="/project">
+      Project
+    </NuxtLink>
     <NuxtLink to="/contact">
       Contact
     </NuxtLink>
