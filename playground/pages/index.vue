@@ -17,3 +17,11 @@
     </section>
   </Lenis>
 </template>
+
+<script setup>
+  const lenis = useLenis()
+  
+  onMounted(() => {
+    console.log(lenis.instance.value)
+  })
+</script>

@@ -11,14 +11,10 @@
 
 import {
    computed,
-   defineComponent,
    onBeforeUnmount,
    onMounted,
-   onUpdated,
    ref,
    inject,
-   toRefs,
-   watch,
 } from "vue";
 
 import Lenis from '@studio-freight/lenis'
