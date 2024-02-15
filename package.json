@@ -1,6 +1,6 @@
 {
   "name": "nuxt3-lenis",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "repository": "https://github.com/benoitdelorme/nuxt3-lenis",
   "license": "MIT",
   "type": "module",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.9.0",
-    "@studio-freight/lenis": "^1.0.27",
+    "@studio-freight/lenis": "1.0.27",
     "@studio-freight/tempus": "^0.0.38"
   },
   "devDependencies": {
