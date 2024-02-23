@@ -5,7 +5,7 @@ export interface ModuleOptions {}
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'nuxt3-lenis',
-    configKey: 'Nuxt3Lenis',
+    configKey: 'lenis',
     compatibility: {
       nuxt: '^3.0.0'
     }
