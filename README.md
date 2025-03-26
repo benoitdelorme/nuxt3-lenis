@@ -1,3 +1,9 @@
+> **⚠️ WARNING**  
+> This library will no longer be updated. I recommend using the official version of Lenis Vue instead:  
+> [Lenis Vue Official GitHub](https://github.com/darkroomengineering/lenis/blob/main/packages/vue/README.md)  
+> Please migrate to the official library for continued updates and support.
+
+
 # Nuxt3 Lenis
 ## Introduction
 nuxt3-lenis provides a `<Lenis>` component that creates a [Lenis](https://github.com/studio-freight/lenis) instance.
