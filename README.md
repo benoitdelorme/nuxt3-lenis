@@ -5,23 +5,28 @@
 
 
 # Nuxt3 Lenis
+
 ## Introduction
-nuxt3-lenis provides a `<Lenis>` component that creates a [Lenis](https://github.com/studio-freight/lenis) instance.
+
+nuxt3-lenis provides a `<LenisContainer>` component that creates a [Lenis](https://github.com/studio-freight/lenis) instance.
 <br/>
 
 ## Installation
 
 For npm users:
+
 ```
 npm i nuxt3-lenis
 ```
 
 For yarn users:
+
 ```
 yarn add nuxt3-lenis
 ```
 
 Add the module in nuxt.config
+
 ```
 modules: [
   "nuxt3-lenis"
@@ -32,18 +37,20 @@ modules: [
 
 ```vue
 <template>
-  <Lenis root>
+  <LenisContainer root>
     <!-- Content -->
-  </Lenis>
+  </LenisContainer>
 </template>
 
 <script setup>
-  const lenis = useLenis(({scroll, velocity, progress, direction}) => { ... })
+const lenis = useLenis(({scroll, velocity, progress, direction}) => { ... })
 </script>
 ```
+
 <br/>
 
 ## Props
+
 - `options`: [Lenis options](https://github.com/studio-freight/lenis#instance-settings).
 - `root`: Lenis will be instanciate using `<html>` scroll. Default: `false`.
 - `autoRaf`: if `false`, `lenis.raf` needs to be called manually. Default: `true`.
@@ -52,16 +59,19 @@ modules: [
 <br/>
 
 ## Events
+
 - `scroll`: [Lenis instance](https://github.com/studio-freight/lenis?tab=readme-ov-file#instance-events).
 
 <br/>
 
 ## Hooks
-Once the Lenis context is set (components mounted inside `<Lenis>`) you can use these handy hooks:
+
+Once the Lenis context is set (components mounted inside `<LenisContainer>`) you can use these handy hooks:
 
 `useLenis` is a hook that returns the Lenis instance
 
 The hook takes three argument:
+
 - `callback`: The function to be called whenever a scroll event is emitted
 - `deps`: Trigger callback on change
 - `priority`: Manage callback execution order
@@ -74,9 +84,9 @@ The hook takes three argument:
 
 ```vue
 <template>
-  <Lenis :options="options" root>
+  <LenisContainer :options="options" root>
     <!-- Content -->
-  </Lenis>
+  </LenisContainer>
 </template>
 
 <script setup>
@@ -85,7 +95,7 @@ const options = {
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   orientation: "horizontal",
   gestureOrientation: "vertical",
-}
+};
 </script>
 ```
 
@@ -93,25 +103,25 @@ const options = {
 
 ```vue
 <template>
-  <Lenis ref="lenisRef" :autoRaf="false" root>
+  <LenisContainer ref="lenisRef" :autoRaf="false" root>
     <!-- Content -->
-  </Lenis>
+  </LenisContainer>
 </template>
 
 <script setup>
-const lenisRef = ref(null)
+const lenisRef = ref(null);
 
 const onFrame = (time) => {
-  lenisRef.value.instance.raf(time * 1000)
-}
+  lenisRef.value.instance.raf(time * 1000);
+};
 
 onMounted(() => {
-  gsap.ticker.add(onFrame)
-})
+  gsap.ticker.add(onFrame);
+});
 
 onBeforeUnmount(() => {
-  gsap.ticker.remove(onFrame)
-})
+  gsap.ticker.remove(onFrame);
+});
 </script>
 ```
 
@@ -119,15 +129,15 @@ onBeforeUnmount(() => {
 
 ```vue
 <template>
-  <Lenis @scroll="onScroll" root>
+  <LenisContainer @scroll="onScroll" root>
     <!-- Content -->
-  </Lenis>
+  </LenisContainer>
 </template>
 
 <script setup>
-const onScroll = ({scroll, velocity, direction, progress}) => {
-  console.log({scroll, velocity, direction, progress})
-}
+const onScroll = ({ scroll, velocity, direction, progress }) => {
+  console.log({ scroll, velocity, direction, progress });
+};
 </script>
 ```
 
@@ -135,28 +145,31 @@ const onScroll = ({scroll, velocity, direction, progress}) => {
 
 ```vue
 <template>
-  <Lenis ref="lenisRef" :autoRaf="false" root>
+  <LenisContainer ref="lenisRef" :autoRaf="false" root>
     <!-- Content -->
-  </Lenis>
+  </LenisContainer>
 </template>
 
 <script setup>
-const lenisRef = ref(null)
+const lenisRef = ref(null);
 
 const onFrame = (time) => {
-  lenisRef.value.instance.raf(time)
-}
+  lenisRef.value.instance.raf(time);
+};
 
 onMounted(() => {
-  lenisRef.value.instance.on("scroll", ({scroll, velocity, direction, progress}) => {
-    console.log({scroll, velocity, direction, progress})
-  })
+  lenisRef.value.instance.on(
+    "scroll",
+    ({ scroll, velocity, direction, progress }) => {
+      console.log({ scroll, velocity, direction, progress });
+    }
+  );
 
-  Tempus.add(onFrame, 0)
-})
+  Tempus.add(onFrame, 0);
+});
 
 onBeforeUnmount(() => {
-  Tempus.remove(onFrame, 0)
-})
+  Tempus.remove(onFrame, 0);
+});
 </script>
 ```
